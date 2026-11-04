@@ -1,0 +1,33 @@
+[
+  {
+    "id": "ws-echo-mock",
+    "name": "Mocked WebSocket echo",
+    "urlPattern": "127.0.0.1:8770/echo",
+    "method": "GET",
+    "kind": "websocket",
+    "stream": {
+      "steps": [
+        { "data": "mocked welcome" }
+      ],
+      "replies": [
+        { "match": "hello", "data": "hello" },
+        { "match": "orl", "matchMode": "contains", "data": "mocked world" }
+      ],
+      "end": { "delayMs": 2000, "closeCode": 4000, "closeReason": "mock done" }
+    }
+  },
+  {
+    "id": "sse-events-mock",
+    "name": "Mocked event stream",
+    "urlPattern": "127.0.0.1:8771/events",
+    "method": "GET",
+    "kind": "sse",
+    "stream": {
+      "steps": [
+        { "id": "1", "event": "greeting", "data": "mocked hello" },
+        { "delayMs": 100, "id": "2", "event": "tick", "data": "{\"n\":42}" },
+        { "delayMs": 100, "id": "3", "event": "done", "data": "mocked bye" }
+      ]
+    }
+  }
+]

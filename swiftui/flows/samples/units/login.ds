@@ -1,0 +1,13 @@
+tap("Login", timeout = 10s)
+tap("Email")
+type("qa@example.com")
+assertVisible("Login email typed: qa@example.com")
+tap("Password")
+type("Pass1234")
+assertVisible("Login password typed: Pass1234")
+tap("Remember me")
+tap("Sign in")
+assertVisible("Login success for qa@example.com")
+// Back to the start screen for the next unit.
+tap("Back")
+waitFor("Sample Screens")

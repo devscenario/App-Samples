@@ -1,0 +1,56 @@
+{
+  "secrets": [
+    "clientAuth"
+  ],
+  "requests": {
+    "token": {
+      "method": "POST",
+      "url": "@backendBase/auth/token",
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "Basic @clientAuth"
+        }
+      ],
+      "bodyType": "FORM",
+      "body": [
+        {
+          "name": "grant_type",
+          "value": "client_credentials"
+        }
+      ],
+      "value": "access_token"
+    },
+    "username": {
+      "url": "@backendBase/users/search?accountId=@accountId",
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "Bearer @token"
+        }
+      ],
+      "value": "users.0.username",
+      "retry": {
+        "mode": "UNTIL_FOUND",
+        "everySeconds": 1,
+        "upToSeconds": 15
+      },
+      "sensitive": false
+    },
+    "orderStatus": {
+      "url": "@backendBase/orders/current",
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "Bearer @token"
+        },
+        {
+          "name": "X-Account-Id",
+          "value": "@accountId"
+        }
+      ],
+      "value": "status",
+      "sensitive": false
+    }
+  }
+}

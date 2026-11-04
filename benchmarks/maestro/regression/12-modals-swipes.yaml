@@ -1,0 +1,52 @@
+appId: ${APP_ID}
+name: modals-swipes
+---
+- scrollUntilVisible:
+    element: "Modals"
+- tapOn: "Modals"
+- runFlow:
+    when:
+      true: ${COMPOSE_IOS == 'true'}
+    file: subflows/retap-tile.yaml
+    env:
+      TILE: "Modals"
+      SCREEN: "Code sheet"
+- extendedWaitUntil:
+    visible: "Open dialogs and sheets, then swipe down or dismiss to validate hide commands\\."
+    timeout: 10000
+- tapOn: "Partial sheet"
+- extendedWaitUntil:
+    visible: "Bottom sheet"
+    timeout: 10000
+- waitForAnimationToEnd
+- swipe:
+    direction: DOWN
+- assertVisible: ".*Bottom sheet dismissed.*"
+- tapOn: "Full sheet"
+- extendedWaitUntil:
+    visible: "Bottom sheet"
+    timeout: 10000
+- waitForAnimationToEnd
+# A plain swipe on a full sheet scrolls its content: drag the sheet by its drag handle.
+# On the Compose MP iOS app Maestro's swipe from the handle leaves the full sheet half open (its default 400 ms,
+# and 100 ms too): there it is a 50 ms flick from the handle's point (10% of the height, where the expanded
+# sheet puts it) to 95%.
+- runFlow:
+    when:
+      true: ${COMPOSE_IOS != 'true'}
+    commands:
+      - swipe:
+          from: "Drag handle"
+          direction: DOWN
+- runFlow:
+    when:
+      true: ${COMPOSE_IOS == 'true'}
+    commands:
+      - swipe:
+          start: "50%,10%"
+          end: "50%,95%"
+          duration: 50
+- assertVisible: ".*Bottom sheet dismissed.*"
+- tapOn:
+    id: "BackButton"
+- assertVisible: "Sample Screens"

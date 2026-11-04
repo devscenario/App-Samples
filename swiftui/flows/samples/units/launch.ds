@@ -1,0 +1,2 @@
+launchApp(iosAppId = "ge.devtool.samples.ios.native", clearState = true)
+waitFor("Sample Screens", timeout = 15s)

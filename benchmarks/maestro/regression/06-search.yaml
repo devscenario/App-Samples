@@ -1,0 +1,16 @@
+appId: ${APP_ID}
+name: search
+---
+- tapOn: "Search"
+- extendedWaitUntil:
+    visible: "Search catalog"
+    timeout: 10000
+- tapOn: "Search products"
+- inputText: "headphones"
+- assertVisible: "Search query typed: headphones"
+- tapOn: "Run search"
+- assertVisible: "Search results for headphones: 2 items"
+- assertVisible: "Wireless Headphones"
+- tapOn:
+    id: "BackButton"
+- assertVisible: "Sample Screens"

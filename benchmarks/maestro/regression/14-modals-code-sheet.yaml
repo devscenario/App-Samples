@@ -1,0 +1,23 @@
+appId: ${APP_ID}
+name: modals-code-sheet
+---
+- scrollUntilVisible:
+    element: "Modals"
+- tapOn: "Modals"
+- runFlow:
+    when:
+      true: ${COMPOSE_IOS == 'true'}
+    file: subflows/retap-tile.yaml
+    env:
+      TILE: "Modals"
+      SCREEN: "Code sheet"
+- tapOn: "Code sheet"
+# The flow targets the field and the button by test tag. On Android the sheet is its own window,
+# outside the activity's testTagsAsResourceId, so Maestro sees no ids there: their labels instead.
+- tapOn: "SMS code"
+- inputText: "1111"
+- tapOn: "Verify"
+- assertVisible: ".*Code verified: 1111.*"
+- tapOn:
+    id: "BackButton"
+- assertVisible: "Sample Screens"

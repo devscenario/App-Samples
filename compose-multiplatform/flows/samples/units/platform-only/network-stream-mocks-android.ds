@@ -1,0 +1,28 @@
+// Android debug build only: the Network screen's stream demos answered by stream mocks instead of the
+// sample's local test server. The mocks are in the project's mocks/ folder, in the group the scenario
+// "Network stream mocks" selects; `devscenario run <project> --scenario "Network stream mocks"
+// --with-mocks` serves them to the in-app interceptor (built with webSockets and serverSentEvents).
+// Starts and ends on the home screen ("Sample Screens").
+scrollTo("Network", maxScrolls = 6, duration = 150ms)
+tap("Network")
+waitFor("Dev Scenario interceptor demo", timeout = 10s)
+// WebSocket: the mocked greeting, an exact reply that echoes "hello", a contains reply to "world" that
+// doesn't echo it, then the mock closes the socket with its own code.
+tap(id("sample.network.button.websocket"))
+waitFor("WS closed: 4000", timeout = 10s)
+assertVisible("WS connected")
+assertVisible("WS message: mocked welcome")
+assertVisible("WS echo: hello")
+assertVisible("WS message: mocked world")
+assertNotVisible("WS message: welcome")
+// SSE: three mocked events, then the mock ends the stream.
+tap(id("sample.network.button.sse"))
+waitFor("SSE closed", timeout = 10s)
+assertVisible("SSE open")
+assertVisible("SSE event 1 (greeting): mocked hello")
+assertVisible("SSE event 2 (tick): {\"n\":42}")
+assertVisible("SSE event 3 (done): mocked bye")
+assertNotVisible("SSE event 1 (greeting): hello")
+// Back to the start screen for the next unit.
+tap("Back")
+waitFor("Sample Screens")

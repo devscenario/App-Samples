@@ -1,0 +1,30 @@
+// Sheets and dialogs animate in: wait for them to settle before swiping or tapping, or the
+// gesture reaches the screen underneath. Dialogs are dismissed by tapping outside them; the
+// system back (Android Back, iOS edge swipe) is covered by modals-back.ds.
+scrollTo("Modals", maxScrolls = 6, duration = 150ms)
+tap("Modals")
+tap("Partial sheet")
+waitFor("Bottom sheet", timeout = 10s)
+waitForAnimations
+swipe(down)
+assertVisible(contains("Bottom sheet dismissed"))
+tap("Full sheet")
+waitForAnimations
+scrollTo("Hide sheet", maxScrolls = 4, duration = 150ms)
+tap("Hide sheet")
+assertVisible(contains("Bottom sheet hidden with close action"))
+tap("Alert dialog")
+waitFor("Session expired")
+waitForAnimations
+tap(point(50%, 92%))
+waitUntilGone("Session expired", timeout = 10s)
+assertVisible(contains("Alert dialog dismissed"))
+tap("Fullscreen dialog")
+waitFor("Fullscreen-like dialog")
+waitForAnimations
+tap(point(50%, 92%))
+waitUntilGone("Fullscreen-like dialog", timeout = 10s)
+assertVisible(contains("Fullscreen dialog dismissed"))
+// Back to the start screen for the next unit.
+tap("Back")
+waitFor("Sample Screens")

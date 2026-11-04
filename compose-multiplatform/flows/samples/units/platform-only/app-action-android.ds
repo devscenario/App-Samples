@@ -1,0 +1,9 @@
+// Runs an action the sample app registered (SampleAppActions, debug builds with the SDK built from
+// source): `resetToHome` opens the start screen in a fresh task from inside the app, as a test's
+// setup would. In-app SDK driver only; every other driver fails the step.
+launchApp(androidAppId = "ge.devtool.samples")
+tap("Profile", timeout = 15s)
+waitFor("Profile settings", timeout = 10s)
+appAction("resetToHome")
+assertVisible("Sample Screens")
+assertNotVisible("Profile settings")

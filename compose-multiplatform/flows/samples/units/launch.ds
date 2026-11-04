@@ -1,0 +1,2 @@
+launchApp(androidAppId = "ge.devtool.samples", iosAppId = "ge.devtool.samples.ios", clearState = true)
+waitFor("Sample Screens", timeout = 15s)

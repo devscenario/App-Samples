@@ -1,0 +1,9 @@
+// A launch flag and an environment variable reach the app: it shows both on Home. iOS only, UIKit sample,
+// which reads them; a later plain launch starts without them.
+launchApp(iosAppId = "ge.devtool.samples.ios.native", flags = ["sample-flag"], environment = args(SAMPLE_ENV = "staging"))
+waitFor("Launch flag: sample-flag", timeout = 15s)
+assertVisible("Launch environment: staging")
+launchApp(iosAppId = "ge.devtool.samples.ios.native")
+waitFor("Sample Screens", timeout = 15s)
+assertNotVisible("Launch flag: sample-flag")
+assertNotVisible("Launch environment: staging")

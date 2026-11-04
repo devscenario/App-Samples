@@ -1,0 +1,30 @@
+appId: ${APP_ID}
+name: showcase
+---
+- extendedWaitUntil:
+    visible: "Grid"
+    timeout: 10000
+- swipe:
+    from: "Grid"
+    direction: LEFT
+- tapOn: "Showcase"
+- extendedWaitUntil:
+    visible: "Component Showcase"
+    timeout: 10000
+# The switch row starts on; tapping its text turns it off.
+- tapOn: "Enable notifications"
+- assertVisible:
+    id: "sample.showcase.switch"
+    checked: false
+- assertVisible:
+    id: "sample.showcase.progress"
+# Drag the slider thumb (it starts at the middle) to the end.
+- swipe:
+    from:
+      id: "sample.showcase.slider"
+    direction: RIGHT
+- scroll
+- assertVisible: "End of screen"
+- tapOn:
+    id: "BackButton"
+- assertVisible: "Sample Screens"

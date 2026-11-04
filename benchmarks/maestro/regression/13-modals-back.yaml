@@ -1,0 +1,61 @@
+# The system back: Android's Back key (`back`); on iOS Maestro has no back command, so it is the same
+# left-edge swipe Dev Scenario's iOS `back` makes (edge to 60% of the width). The dialog half runs on
+# Android only, as in modals-back.ds.
+appId: ${APP_ID}
+name: modals-back
+---
+- scrollUntilVisible:
+    element: "Modals"
+- tapOn: "Modals"
+- runFlow:
+    when:
+      true: ${COMPOSE_IOS == 'true'}
+    file: subflows/retap-tile.yaml
+    env:
+      TILE: "Modals"
+      SCREEN: "Code sheet"
+- assertVisible: "Alert dialog"
+- runFlow:
+    when:
+      platform: Android
+    commands:
+      - tapOn: "Alert dialog"
+      - assertVisible: "Session expired"
+      - waitForAnimationToEnd
+      - back
+      - extendedWaitUntil:
+          notVisible: "Session expired"
+          timeout: 10000
+      - assertVisible: ".*Alert dialog dismissed.*"
+      - tapOn: "Fullscreen dialog"
+      - assertVisible: "Fullscreen-like dialog"
+      - waitForAnimationToEnd
+      - back
+      - extendedWaitUntil:
+          notVisible: "Fullscreen-like dialog"
+          timeout: 10000
+      - assertVisible: ".*Fullscreen dialog dismissed.*"
+- runFlow:
+    when:
+      platform: Android
+    commands:
+      - back
+- runFlow:
+    when:
+      platform: iOS
+      true: ${COMPOSE_IOS != 'true'}
+    commands:
+      - swipe:
+          start: "0%,50%"
+          end: "60%,50%"
+          duration: 100
+# NOT COMPARABLE on the Compose MP iOS app: no Maestro swipe from the left edge (0-2% of the width, 50-300 ms)
+# triggers its back gesture, which Compose handles itself. The flow taps the Back button there instead, so the
+# units after it start on the home screen, and the unit is left out of that app's total.
+- runFlow:
+    when:
+      true: ${COMPOSE_IOS == 'true'}
+    commands:
+      - tapOn:
+          id: "BackButton"
+- assertVisible: "Sample Screens"

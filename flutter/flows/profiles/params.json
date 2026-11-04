@@ -1,0 +1,11 @@
+[
+  {
+    "id": "sample-backend-local",
+    "name": "local",
+    "params": {
+      "backendBase": "http://127.0.0.1:8095",
+      "accountId": "1001",
+      "password": "sample-pass"
+    }
+  }
+]

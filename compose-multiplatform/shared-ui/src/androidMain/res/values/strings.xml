@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Login screen texts on Android; iOS shows the same texts from the shared EnLoginStrings table. -->
+<resources>
+    <string name="sample_login_welcome">Welcome back</string>
+    <string name="sample_login_email">Email</string>
+    <string name="sample_login_password">Password</string>
+    <string name="sample_login_remember_me">Remember me</string>
+    <string name="sample_login_sign_in">Sign in</string>
+    <string name="sample_login_email_typed">Login email typed: %1$s</string>
+    <string name="sample_login_password_typed">Login password typed: %1$s</string>
+    <string name="sample_login_success">Login success for %1$s</string>
+    <string name="sample_login_failure">Login failed: enter a valid email and 6+ character password</string>
+</resources>

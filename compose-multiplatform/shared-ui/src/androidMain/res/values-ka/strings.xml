@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Georgian login screen texts on Android; iOS shows the same texts from KaLoginStrings. -->
+<resources>
+    <string name="sample_login_welcome">კეთილი იყოს თქვენი დაბრუნება</string>
+    <string name="sample_login_email">ელფოსტა</string>
+    <string name="sample_login_password">პაროლი</string>
+    <string name="sample_login_remember_me">დამიმახსოვრე</string>
+    <string name="sample_login_sign_in">შესვლა</string>
+    <string name="sample_login_email_typed">აკრეფილი ელფოსტა: %1$s</string>
+    <string name="sample_login_password_typed">აკრეფილი პაროლი: %1$s</string>
+    <string name="sample_login_success">წარმატებული შესვლა: %1$s</string>
+    <string name="sample_login_failure">შესვლა ვერ მოხერხდა: შეიყვანეთ სწორი ელფოსტა და 6+ სიმბოლოიანი პაროლი</string>
+</resources>

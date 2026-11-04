@@ -1,0 +1,14 @@
+// Network demo screen. Checks the UI side only (a call is logged and completes), not the
+// response code: the endpoints are public services, so the flow must pass offline too.
+scrollTo("Network", maxScrolls = 6, duration = 150ms)
+tap("Network")
+waitFor("Dev Scenario interceptor demo", timeout = 10s)
+// The screen fires one request on entry; its status line ends as "done" or "failed".
+waitFor(regex("^Auto request (done|failed).*"), timeout = 20s)
+tap("POST jsonplaceholder /posts")
+waitFor(regex("^POST +POST /posts$"), timeout = 10s)
+tap("GET → 404 (force error)")
+waitFor(regex("^GET +GET → 404$"), timeout = 10s)
+// Back to the start screen for the next unit.
+tap("Back")
+waitFor("Sample Screens")

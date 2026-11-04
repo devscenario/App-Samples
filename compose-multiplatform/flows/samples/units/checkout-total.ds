@@ -1,0 +1,16 @@
+// Number checks: Express delivery must add exactly its shipping fee to the checkout total.
+// Not part of the sample regression (the native suites it is compared with don't check this).
+tap("Checkout", timeout = 10s)
+waitFor("Checkout", timeout = 10s)
+val TOTAL_BEFORE = numberOf(regex("Total: .*"))
+tap("Express delivery")
+assertVisible("Payment: Visa •••• 4242")
+val SHIPPING = numberOf(regex("Shipping: .*"))
+val TOTAL_AFTER = numberOf(regex("Total: .*"))
+assertThat(TOTAL_AFTER == TOTAL_BEFORE + SHIPPING)
+if (SHIPPING > 0) {
+    log("Express shipping costs ${SHIPPING}")
+}
+// Back to the start screen for the next unit.
+tap("Back")
+waitFor("Sample Screens")

@@ -1,0 +1,2 @@
+launchApp(androidAppId = "ge.devtool.devtool_flutter_sample", iosAppId = "ge.devtool.devtoolFlutterSample", clearState = true)
+waitFor("Sample Screens", timeout = 15s)

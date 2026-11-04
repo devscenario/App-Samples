@@ -1,0 +1,12 @@
+// Launch arguments, and a launch that leaves the running app as it is. Not in the scenario: the app
+// starts with `env: staging` here, which the units after it would see.
+launchApp(iosAppId = "ge.devtool.samples.ios.native", arguments = args(env = "staging"))
+waitFor("Launch env: staging", timeout = 15s)
+scrollTo("Modals", maxScrolls = 6, duration = 150ms)
+tap("Modals")
+waitFor("Code sheet", timeout = 10s)
+// `stopApp: false` brings the running app to the front without restarting it: still on Modals.
+launchApp(iosAppId = "ge.devtool.samples.ios.native", stopApp = false)
+assertVisible("Code sheet")
+tap("Back")
+waitFor("Sample Screens")

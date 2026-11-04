@@ -1,0 +1,38 @@
+appId: ${APP_ID}
+name: webview
+---
+- scrollUntilVisible:
+    element: "WebView"
+- tapOn: "WebView"
+- runFlow:
+    when:
+      true: ${COMPOSE_IOS == 'true'}
+    file: subflows/retap-tile.yaml
+    env:
+      TILE: "WebView"
+      SCREEN: "Web checkout"
+- extendedWaitUntil:
+    visible: "Web checkout"
+    timeout: 15000
+- assertVisible: "Last web event: page loaded"
+- tapOn: "Email"
+- inputText: "qa@shop.com"
+- tapOn: "Promo code"
+- inputText: "spring10"
+- tapOn: "Apply code"
+- assertVisible: "Code SPRING10 applied"
+- assertVisible: "Last web event: Code SPRING10 applied"
+- tapOn: "I agree to the terms"
+- tapOn: "Pay now"
+- assertVisible: "Payment confirmed for qa@shop.com"
+- assertVisible: "Last web event: payment confirmed"
+- tapOn: "Terms"
+- assertVisible: "Terms of service"
+- assertVisible: "Last web event: opened terms"
+- tapOn: "Back to checkout"
+- assertVisible: "Web checkout"
+- scrollUntilVisible:
+    element: "Footer reached"
+- tapOn:
+    id: "BackButton"
+- assertVisible: "Sample Screens"

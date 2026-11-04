@@ -1,0 +1,27 @@
+# Maestro can't drag from one element to another: each drag is a swipe between fixed screen points,
+# the centres of the two elements as laid out on that device (see the README): 150 ms on Android
+# (a 40 ms swipe isn't picked up as a drag there), 40 ms on iOS.
+appId: ${APP_ID}
+name: drag-drop
+---
+- scrollUntilVisible:
+    element: "Drag & Drop"
+- tapOn: "Drag & Drop"
+- runFlow:
+    when:
+      true: ${COMPOSE_IOS == 'true'}
+    file: subflows/retap-tile.yaml
+    env:
+      TILE: "Drag & Drop"
+      SCREEN: "Drop Zone"
+- runFlow:
+    when:
+      platform: Android
+    file: subflows/drag-drop-android.yaml
+- runFlow:
+    when:
+      platform: iOS
+    file: subflows/drag-drop-ios.yaml
+- tapOn:
+    id: "BackButton"
+- assertVisible: "Sample Screens"

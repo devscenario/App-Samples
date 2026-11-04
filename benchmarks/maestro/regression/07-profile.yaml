@@ -1,0 +1,17 @@
+appId: ${APP_ID}
+name: profile
+---
+- tapOn: "Profile"
+- extendedWaitUntil:
+    visible: "Profile settings"
+    timeout: 10000
+- assertVisible: "Profile name typed: QA Tester"
+- tapOn: "Phone number"
+- inputText: "5551234567"
+- assertVisible: "Profile phone typed: 5551234567"
+- tapOn: "Marketing emails"
+- tapOn: "Save profile"
+- assertVisible: "Profile saved for QA Tester"
+- tapOn:
+    id: "BackButton"
+- assertVisible: "Sample Screens"

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Plain HTTP only to the host machine: the interceptor's export to the desktop app
+     (localhost:8080 over `adb reverse`) and the sample test backend (10.0.2.2:8095 from an
+     emulator, localhost:8095 over `adb reverse`). Everything else needs HTTPS. -->
+<network-security-config>
+    <base-config cleartextTrafficPermitted="false" />
+    <domain-config cleartextTrafficPermitted="true">
+        <domain includeSubdomains="false">localhost</domain>
+        <domain includeSubdomains="false">127.0.0.1</domain>
+        <domain includeSubdomains="false">10.0.2.2</domain>
+    </domain-config>
+</network-security-config>

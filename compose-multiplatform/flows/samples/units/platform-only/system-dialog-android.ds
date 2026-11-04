@@ -1,0 +1,9 @@
+// A SystemUI dialog (Android 12+ Internet panel) over the still-resumed sample
+// app: focus moves to a system window without pausing the app. With the in-app
+// SDK this relies on "Auto fallback" recognising the named system window.
+launchApp(androidAppId = "ge.devtool.samples")
+waitFor("Login", timeout = 15s)
+shell("am start -a android.settings.panel.action.INTERNET_CONNECTIVITY")
+waitFor("Internet", timeout = 8s)
+tap("Done")
+tap("Login", timeout = 10s)

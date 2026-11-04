@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22689" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="checkout-vc">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <scene sceneID="checkout-scene">
+            <objects>
+                <viewController storyboardIdentifier="CheckoutViewController" id="checkout-vc" customClass="CheckoutViewController" customModule="DevToolSampleIosNative" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="checkout-view">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="checkout-scroll">
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="fill" distribution="fill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="checkout-stack">
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Checkout" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" translatesAutoresizingMaskIntoConstraints="NO" id="checkout-title">
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="fill" distribution="fill" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="summary-card">
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Order summary" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" translatesAutoresizingMaskIntoConstraints="NO" id="summary-title">
+                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Wireless Headphones" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" translatesAutoresizingMaskIntoConstraints="NO" id="summary-product">
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Subtotal: $89.99" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" translatesAutoresizingMaskIntoConstraints="NO" id="summary-subtotal">
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Shipping: $0.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" translatesAutoresizingMaskIntoConstraints="NO" id="checkout-shipping">
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Total: $89.99" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" translatesAutoresizingMaskIntoConstraints="NO" id="checkout-total">
+                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                            </stackView>
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Shipping address" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="checkout-address">
+                                                <accessibility key="accessibilityConfiguration" identifier="sample.checkout.address"/>
+                                                <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="done"/>
+                                            </textField>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="horizontal" alignment="center" distribution="fill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="delivery-row">
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Express delivery" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" translatesAutoresizingMaskIntoConstraints="NO" id="delivery-label">
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="delivery-spacer"/>
+                                                    <switch opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="checkout-delivery">
+                                                        <accessibility key="accessibilityConfiguration" identifier="sample.checkout.delivery"/>
+                                                    </switch>
+                                                </subviews>
+                                            </stackView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Payment: Visa •••• 4242" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" translatesAutoresizingMaskIntoConstraints="NO" id="checkout-payment">
+                                                <accessibility key="accessibilityConfiguration" identifier="sample.checkout.payment"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="checkout-place-order">
+                                                <accessibility key="accessibilityConfiguration" identifier="sample.checkout.place.order"/>
+                                                <state key="normal" title="Place order"/>
+                                                <connections>
+                                                    <action selector="placeOrderTapped:" destination="checkout-vc" eventType="touchUpInside" id="checkout-place-action"/>
+                                                </connections>
+                                            </button>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" translatesAutoresizingMaskIntoConstraints="NO" id="checkout-address-preview">
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" numberOfLines="0" text="" textAlignment="natural" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" translatesAutoresizingMaskIntoConstraints="NO" id="checkout-status">
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="checkout-stack" firstAttribute="leading" secondItem="checkout-scroll" secondAttribute="leading" constant="16" id="cs1"/>
+                                    <constraint firstItem="checkout-scroll" firstAttribute="trailing" secondItem="checkout-stack" secondAttribute="trailing" constant="16" id="cs2"/>
+                                    <constraint firstItem="checkout-stack" firstAttribute="top" secondItem="checkout-scroll" secondAttribute="top" constant="16" id="cs3"/>
+                                    <constraint firstItem="checkout-scroll" firstAttribute="bottom" secondItem="checkout-stack" secondAttribute="bottom" constant="16" id="cs4"/>
+                                    <constraint firstItem="checkout-stack" firstAttribute="width" secondItem="checkout-scroll" secondAttribute="width" constant="-32" id="cs5"/>
+                                </constraints>
+                            </scrollView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="checkout-safearea"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="checkout-scroll" firstAttribute="leading" secondItem="checkout-safearea" secondAttribute="leading" id="cv1"/>
+                            <constraint firstItem="checkout-safearea" firstAttribute="trailing" secondItem="checkout-scroll" secondAttribute="trailing" id="cv2"/>
+                            <constraint firstItem="checkout-scroll" firstAttribute="top" secondItem="checkout-safearea" secondAttribute="top" id="cv3"/>
+                            <constraint firstItem="checkout-safearea" firstAttribute="bottom" secondItem="checkout-scroll" secondAttribute="bottom" id="cv4"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="titleLabel" destination="checkout-title" id="cko8"/>
+                        <outlet property="orderSummaryLabel" destination="summary-title" id="cko9"/>
+                        <outlet property="productLabel" destination="summary-product" id="cko10"/>
+                        <outlet property="subtotalLabel" destination="summary-subtotal" id="cko11"/>
+                        <outlet property="deliveryLabel" destination="delivery-label" id="cko12"/>
+                        <outlet property="placeOrderButton" destination="checkout-place-order" id="cko13"/>
+                        <outlet property="addressField" destination="checkout-address" id="cko1"/>
+                        <outlet property="addressPreviewLabel" destination="checkout-address-preview" id="cko2"/>
+                        <outlet property="deliverySwitch" destination="checkout-delivery" id="cko3"/>
+                        <outlet property="paymentLabel" destination="checkout-payment" id="cko4"/>
+                        <outlet property="shippingLabel" destination="checkout-shipping" id="cko5"/>
+                        <outlet property="statusLabel" destination="checkout-status" id="cko6"/>
+                        <outlet property="totalLabel" destination="checkout-total" id="cko7"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="checkout-firstresponder" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+        </scene>
+    </scenes>
+</document>

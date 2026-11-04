@@ -1,0 +1,12 @@
+// The home grid is taller than a small phone (iPhone 16e): scroll to the Pinch tile.
+scrollTo("Pinch", maxScrolls = 6, duration = 150ms)
+tap("Pinch")
+waitFor("Pinch Playground", timeout = 10s)
+// Fingers together zoom out, apart zoom in, as in a photo viewer.
+pinchIn
+assertVisible(contains("last: zoom out"))
+pinchOut
+assertVisible(contains("last: zoom in"))
+// Back to the start screen for the next unit.
+tap("Back")
+waitFor("Sample Screens")

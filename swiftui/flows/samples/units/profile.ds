@@ -1,0 +1,12 @@
+tap("Profile", timeout = 10s)
+waitFor("Profile settings", timeout = 10s)
+assertVisible("Profile name typed: QA Tester")
+tap("Phone number")
+type("5551234567")
+assertVisible("Profile phone typed: 5551234567")
+tap("Marketing emails")
+tap("Save profile")
+assertVisible("Profile saved for QA Tester")
+// Back to the start screen for the next unit.
+tap("Back")
+waitFor("Sample Screens")

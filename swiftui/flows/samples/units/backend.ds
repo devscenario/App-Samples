@@ -1,0 +1,22 @@
+// Backend screen against the sample backend (test-backend, port 8095): test data from requests.
+// @username comes from a request that needs a token (client credentials from the secret @clientAuth); the
+// backend renames the user after every sign-in and has no user for 2 s after that, so the key retries.
+// After Place order, waitForValue reads @orderStatus from the backend until the order ships.
+// Needs the backend running and the secret set with host 127.0.0.1 (Profiles › Params › clientAuth, or
+// DS_SECRET_LOCAL_CLIENTAUTH and DS_SECRET_LOCAL_CLIENTAUTH_HOSTS).
+use(@params.local)
+scrollTo("Backend", maxScrolls = 8, duration = 150ms)
+tap("Backend")
+type("@username", into = id("sample.backend.username"))
+type("@password", into = id("sample.backend.password"))
+hideKeyboard
+tap("Sign in")
+waitFor("Signed in as @username", timeout = 10s)
+tap("Place order")
+waitFor("Order placed", timeout = 10s)
+waitForValue(@orderStatus, equals = "Shipped", timeout = 30s, interval = 1s)
+tap("Refresh status")
+assertVisible("Status: Shipped")
+// Back to the start screen for the next unit.
+tap("Back")
+waitFor("Sample Screens")

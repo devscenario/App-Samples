@@ -1,0 +1,24 @@
+# The timed part of the sample regression (screens 2-18), in scenario order, in the app launch.yaml left
+# running. Stop at the first failure, as the scenario does.
+flows:
+  - "*.yaml"
+executionOrder:
+  continueOnFailure: false
+  flowsOrder:
+    - login
+    - registration
+    - checkout
+    - grid
+    - list
+    - search
+    - profile
+    - showcase
+    - pinch
+    - drag-drop
+    - modals
+    - modals-swipes
+    - modals-back
+    - modals-code-sheet
+    - network
+    - files
+    - webview

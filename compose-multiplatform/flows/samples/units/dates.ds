@@ -1,0 +1,11 @@
+// The date now: parts as numbers, a format as text. Runs on any screen.
+val day = day()
+val month = month()
+val year = year()
+assertThat(day >= 1)
+assertThat(month <= 12)
+assertThat(year() >= 2026)
+val today = date("dd/mm/yyyy")
+assertThat(today.contains("/$year"))
+val stamp = date("yyyy-MM-dd HH:mm:ss")
+log("Today is $today, day $day of month $month; now $stamp")

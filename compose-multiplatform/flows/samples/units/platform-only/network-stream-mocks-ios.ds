@@ -1,0 +1,29 @@
+// iOS debug builds only (either iOS sample): the Network screen's stream demos answered by stream mocks
+// instead of the sample's local test server. Runs in the Dev Scenario app with the Network plugin on,
+// or from the CLI with --with-mocks on a booted simulator: the scenario "Network stream mocks iOS"
+// selects the project's mock group "Stream mocks".
+// Starts and ends on the home screen ("Sample Screens").
+scrollTo("Network", maxScrolls = 6, duration = 150ms)
+tap("Network")
+waitFor("Dev Scenario interceptor demo", timeout = 10s)
+// WebSocket: the mocked greeting, an exact reply that echoes "hello", a contains reply to "world" that
+// doesn't echo it, then the mock closes the socket with its own code.
+tap(id("sample.network.button.websocket"))
+waitFor("WS closed: 4000", timeout = 10s)
+assertVisible("WS connected")
+assertVisible("WS message: mocked welcome")
+assertVisible("WS echo: hello")
+assertVisible("WS message: mocked world")
+assertNotVisible("WS message: welcome")
+// SSE: three mocked events, then the mock ends the stream.
+tap(id("sample.network.button.sse"))
+// Both logs don't fit an iPhone screen: scroll down to the SSE log as its lines arrive.
+scrollTo("SSE closed", maxScrolls = 6, duration = 150ms)
+assertVisible("SSE open")
+assertVisible("SSE event 1 (greeting): mocked hello")
+assertVisible("SSE event 2 (tick): {\"n\":42}")
+assertVisible("SSE event 3 (done): mocked bye")
+assertNotVisible("SSE event 1 (greeting): hello")
+// Back to the start screen for the next unit.
+tap("Back")
+waitFor("Sample Screens")

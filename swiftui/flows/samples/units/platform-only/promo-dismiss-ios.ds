@@ -1,0 +1,17 @@
+// A promo sheet comes up on its own over the Modals screen. With dismissInterruptingDialogs on, the tap
+// the sheet intercepts makes the in-app SDK dismiss the sheet and the tap is sent again, so the target
+// under it gets tapped. iOS in-app SDK only, SwiftUI sample: a Compose sheet on iOS hides the screen
+// beneath it from accessibility, so the target isn't found while it is up.
+launchApp(iosAppId = "ge.devtool.samples.ios.native")
+waitFor("Sample Screens", timeout = 15s)
+scrollTo("Modals", maxScrolls = 6, duration = 150ms)
+tap("Modals")
+tap(testTag("sample.modals.promo.soon"))
+waitFor(testTag("sample.modals.promo.close"))
+dismissInterruptingDialogs(true)
+tap(testTag("sample.modals.promo.target"))
+dismissInterruptingDialogs(false)
+assertVisible(contains("Target tapped"))
+assertNotVisible(testTag("sample.modals.promo.close"))
+tap("Back")
+waitFor("Sample Screens")

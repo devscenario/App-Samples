@@ -1,0 +1,13 @@
+// The system back with a bottom sheet open closes the sheet and leaves the Modals screen under it in
+// place: the sheet is its own window and gets the key. Android only (iOS has no back key).
+launchApp(androidAppId = "ge.devtool.samples")
+waitFor("Sample Screens", timeout = 15s)
+scrollTo("Modals", maxScrolls = 6, duration = 150ms)
+tap("Modals")
+tap("Code sheet")
+waitFor(testTag("sample.modals.verify.code"))
+back
+waitUntilGone(testTag("sample.modals.verify.code"), timeout = 10s)
+assertVisible("Code sheet")
+back
+waitFor("Sample Screens")

@@ -1,0 +1,11 @@
+tap("Search", timeout = 10s)
+waitFor("Search catalog", timeout = 10s)
+tap("Search products")
+type("headphones")
+assertVisible("Search query typed: headphones")
+tap("Run search")
+assertVisible("Search results for headphones: 2 items")
+assertVisible("Wireless Headphones")
+// Back to the start screen for the next unit.
+tap("Back")
+waitFor("Sample Screens")

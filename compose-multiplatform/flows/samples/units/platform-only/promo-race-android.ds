@@ -1,0 +1,15 @@
+// The promo sheet comes up while the next tap is on its way: whether the tap lands before the sheet or
+// the sheet intercepts it (then Back closes it and the tap is sent again), the target ends up tapped.
+// A sheet that comes up after the tap is closed the same way by the Back tap, still in the region.
+// Android in-app SDK only: the SDK reports a tap another window would take.
+launchApp(androidAppId = "ge.devtool.samples")
+waitFor("Sample Screens", timeout = 15s)
+scrollTo("Modals", maxScrolls = 6, duration = 150ms)
+tap("Modals")
+tap(testTag("sample.modals.promo.soon"))
+dismissInterruptingDialogs(true)
+tap(testTag("sample.modals.promo.target"))
+assertVisible(contains("Target tapped"))
+tap("Back")
+dismissInterruptingDialogs(false)
+waitFor("Sample Screens")

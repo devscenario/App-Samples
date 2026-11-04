@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>CFBundleDevelopmentRegion</key>
+    <string>$(DEVELOPMENT_LANGUAGE)</string>
+    <key>CFBundleExecutable</key>
+    <string>$(EXECUTABLE_NAME)</string>
+    <key>CFBundleIdentifier</key>
+    <string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
+    <key>CFBundleInfoDictionaryVersion</key>
+    <string>6.0</string>
+    <key>CFBundleName</key>
+    <string>DevToolSampleIosNative</string>
+    <!-- Same display name in both iOS samples: it names the app's folder in the document
+         picker (On My iPhone), which the sample regression's files unit opens by name. -->
+    <key>CFBundleDisplayName</key>
+    <string>Dev Scenario Sample</string>
+    <key>CFBundlePackageType</key>
+    <string>APPL</string>
+    <key>CFBundleShortVersionString</key>
+    <string>1.0</string>
+    <key>CFBundleVersion</key>
+    <string>1</string>
+    <key>LSRequiresIPhoneOS</key>
+    <true/>
+    <key>UILaunchStoryboardName</key>
+    <string>LaunchScreen</string>
+    <key>UIApplicationSceneManifest</key>
+    <dict>
+        <key>UIApplicationSupportsMultipleScenes</key>
+        <false/>
+        <key>UISceneConfigurations</key>
+        <dict>
+            <key>UIWindowSceneSessionRoleApplication</key>
+            <array>
+                <dict>
+                    <key>UISceneConfigurationName</key>
+                    <string>Default Configuration</string>
+                    <key>UISceneDelegateClassName</key>
+                    <string>$(PRODUCT_MODULE_NAME).SceneDelegate</string>
+                </dict>
+            </array>
+        </dict>
+    </dict>
+    <key>CADisableMinimumFrameDurationOnPhone</key>
+    <true/>
+    <!-- Files in the app's Documents folder show up in the document picker under
+         On My iPhone → this app, so a flow can seed a file (pushFile) and pick it. -->
+    <key>UIFileSharingEnabled</key>
+    <true/>
+    <key>LSSupportsOpeningDocumentsInPlace</key>
+    <true/>
+    <!-- App Transport Security: Dev Scenario's interceptor exports captured traffic
+         to `http://localhost:8080`. `NSAllowsLocalNetworking` whitelists
+         loopback/link-local hosts while keeping ATS on for everything else. -->
+    <key>NSAppTransportSecurity</key>
+    <dict>
+        <key>NSAllowsLocalNetworking</key>
+        <true/>
+    </dict>
+    <!-- The interceptor shows server-sent events and WebSocket messages live (the Network screen's
+         stream demos). They only matter where the interceptor runs (simulator and development-signed
+         builds); App Store, TestFlight and ad-hoc builds ignore them. -->
+    <key>DevScenarioInterceptorServerSentEvents</key>
+    <true/>
+    <key>DevScenarioInterceptorWebSockets</key>
+    <true/>
+</dict>
+</plist>

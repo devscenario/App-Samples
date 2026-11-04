@@ -1,0 +1,11 @@
+tap("Grid", timeout = 10s)
+waitFor("Product 1", timeout = 10s)
+scrollTo("Product 5", maxScrolls = 3, duration = 150ms)
+assertVisible("Product 5")
+tap("Product 5")
+assertVisible("Product details")
+assertVisible("Selected Product 5")
+assertVisible("Price: $31.99")
+// Back to the start screen for the next unit.
+tap("Back")
+waitFor("Sample Screens")

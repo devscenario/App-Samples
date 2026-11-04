@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- AppCompat theme so AppCompatActivity + AppCompatDelegate's per-app
+         locale switch work on API 24+ (see MainActivity). Compose paints its
+         own MaterialTheme, so this parent only supplies the AppCompat host. -->
+    <style name="Theme.SampleApp" parent="Theme.AppCompat.Light.NoActionBar" />
+</resources>
+

@@ -1,0 +1,48 @@
+appId: ${APP_ID}
+name: modals
+---
+- scrollUntilVisible:
+    element: "Modals"
+- tapOn: "Modals"
+- runFlow:
+    when:
+      true: ${COMPOSE_IOS == 'true'}
+    file: subflows/retap-tile.yaml
+    env:
+      TILE: "Modals"
+      SCREEN: "Code sheet"
+- tapOn: "Partial sheet"
+- extendedWaitUntil:
+    visible: "Bottom sheet"
+    timeout: 10000
+- waitForAnimationToEnd
+- swipe:
+    direction: DOWN
+- assertVisible: ".*Bottom sheet dismissed.*"
+- tapOn: "Full sheet"
+- waitForAnimationToEnd
+- scrollUntilVisible:
+    element: "Hide sheet"
+- tapOn: "Hide sheet"
+- assertVisible: ".*Bottom sheet hidden with close action.*"
+- tapOn: "Alert dialog"
+- assertVisible: "Session expired"
+- waitForAnimationToEnd
+- tapOn:
+    point: "50%,92%"
+- extendedWaitUntil:
+    notVisible: "Session expired"
+    timeout: 10000
+- assertVisible: ".*Alert dialog dismissed.*"
+- tapOn: "Fullscreen dialog"
+- assertVisible: "Fullscreen-like dialog"
+- waitForAnimationToEnd
+- tapOn:
+    point: "50%,92%"
+- extendedWaitUntil:
+    notVisible: "Fullscreen-like dialog"
+    timeout: 10000
+- assertVisible: ".*Fullscreen dialog dismissed.*"
+- tapOn:
+    id: "BackButton"
+- assertVisible: "Sample Screens"

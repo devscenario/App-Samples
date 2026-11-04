@@ -1,0 +1,7 @@
+{
+  "runs": [
+    {
+      "scenario": "samples/scenarios/Sample regression.scenario.json"
+    }
+  ]
+}

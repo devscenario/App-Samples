@@ -1,0 +1,31 @@
+appId: ${APP_ID}
+name: network
+---
+- scrollUntilVisible:
+    element: "Network"
+- tapOn: "Network"
+- runFlow:
+    when:
+      true: ${COMPOSE_IOS == 'true'}
+    file: subflows/retap-tile.yaml
+    env:
+      TILE: "Network"
+      SCREEN: "Dev Scenario interceptor demo"
+- extendedWaitUntil:
+    visible: "Dev Scenario interceptor demo"
+    timeout: 10000
+# The screen fires one request on entry; its status line ends as "done" or "failed".
+- extendedWaitUntil:
+    visible: "^Auto request (done|failed).*"
+    timeout: 20000
+- tapOn: "POST jsonplaceholder /posts"
+- extendedWaitUntil:
+    visible: "^POST +POST /posts$"
+    timeout: 10000
+- tapOn: "GET → 404 \\(force error\\)"
+- extendedWaitUntil:
+    visible: "^GET +GET → 404$"
+    timeout: 10000
+- tapOn:
+    id: "BackButton"
+- assertVisible: "Sample Screens"

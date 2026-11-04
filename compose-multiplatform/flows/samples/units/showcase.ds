@@ -1,0 +1,15 @@
+waitFor("Grid", timeout = 10s)
+scroll(left, from = "Grid")
+tap("Showcase", timeout = 10s)
+waitFor("Component Showcase", timeout = 10s)
+// The switch row starts on; tapping its text turns it off.
+tap("Enable notifications")
+assertNotChecked(id("sample.showcase.switch"))
+assertVisible(id("sample.showcase.progress"))
+// Drag the slider thumb (it starts at the middle) to the end; the progress bar follows it.
+swipe(right, from = id("sample.showcase.slider"))
+scroll
+assertVisible("End of screen")
+// Back to the start screen for the next unit.
+tap("Back")
+waitFor("Sample Screens")

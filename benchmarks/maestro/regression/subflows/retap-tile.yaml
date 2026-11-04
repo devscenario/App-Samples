@@ -1,0 +1,14 @@
+# Compose Multiplatform on iOS (COMPOSE_IOS=true, set by run-benchmark.sh for that app): the home grid's scroll
+# flings on after the finger lifts, outside XCTest's idle wait, and a tap during the fling only stops it. When the
+# tile's screen hasn't opened within 1.5 s, tap the tile once more. The other apps don't run this.
+appId: ${APP_ID}
+---
+- extendedWaitUntil:
+    visible: ${SCREEN}
+    timeout: 1500
+    optional: true
+- runFlow:
+    when:
+      notVisible: ${SCREEN}
+    commands:
+      - tapOn: ${TILE}

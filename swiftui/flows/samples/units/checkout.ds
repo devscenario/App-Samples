@@ -1,0 +1,13 @@
+tap("Checkout", timeout = 10s)
+waitFor("Checkout", timeout = 10s)
+assertVisible("Order summary")
+tap("Shipping address")
+type("42 Test Street")
+assertVisible("Checkout address typed: 42 Test Street")
+tap("Express delivery")
+assertVisible("Payment: Visa •••• 4242")
+tap("Place order")
+assertVisible("Order placed for 42 Test Street")
+// Back to the start screen for the next unit.
+tap("Back")
+waitFor("Sample Screens")

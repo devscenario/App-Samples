@@ -1,0 +1,25 @@
+// The system back on both platforms (Android Back, the iOS swipe from the left edge): it leaves
+// a screen. On Android it also dismisses a dialog without leaving the screen.
+// Known iOS gap: the edge swipe does not dismiss a Compose AlertDialog or Dialog on iOS (the
+// dialog stays open, the screen underneath doesn't move). The dialog half runs on Android only
+// until that is fixed; it is not replaced by a Close tap.
+scrollTo("Modals", maxScrolls = 6, duration = 150ms)
+tap("Modals")
+waitFor("Alert dialog")
+if (platform == android) {
+    tap("Alert dialog")
+    waitFor("Session expired")
+    waitForAnimations
+    back
+    waitUntilGone("Session expired", timeout = 10s)
+    assertVisible(contains("Alert dialog dismissed"))
+    tap("Fullscreen dialog")
+    waitFor("Fullscreen-like dialog")
+    waitForAnimations
+    back
+    waitUntilGone("Fullscreen-like dialog", timeout = 10s)
+    assertVisible(contains("Fullscreen dialog dismissed"))
+}
+// Back to the start screen with the system back too.
+back
+waitFor("Sample Screens")

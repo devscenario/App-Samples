@@ -1,0 +1,14 @@
+{
+  "name": "Network stream mocks iOS",
+  "mocks": [
+    "stream-mocks"
+  ],
+  "steps": [
+    {
+      "unit": "samples/units/launch.ds"
+    },
+    {
+      "unit": "samples/units/platform-only/network-stream-mocks-ios.ds"
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+appId: ${APP_ID}
+name: registration
+---
+- tapOn: "Registration"
+- extendedWaitUntil:
+    visible: "Create account"
+    timeout: 10000
+- tapOn: "Full name"
+- inputText: "Test User"
+- assertVisible: "Registration name typed: Test User"
+- tapOn: "Email"
+- inputText: "newuser@test.example.com"
+- assertVisible: "Registration email typed: newuser@test.example.com"
+- tapOn: "Password"
+- inputText: "Password123"
+- assertVisible: "Registration password typed: Password123"
+# Maestro sees on-screen elements only, and on Android this line sits under the keyboard (the form
+# fits the screen, so it can't be scrolled into view): hide the keyboard first. iOS shows the line
+# without that (Maestro's hideKeyboard fails on these iOS text fields).
+- runFlow:
+    when:
+      platform: Android
+    commands:
+      - hideKeyboard
+- assertVisible: "Registration success for newuser@test.example.com"
+- scrollUntilVisible:
+    element: "Register"
+- tapOn: "Register"
+- tapOn:
+    id: "BackButton"
+- assertVisible: "Sample Screens"

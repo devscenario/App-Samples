@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Debug builds only: declares the in-app SDK's read-only accessibility service, which Dev Scenario
+  turns on for a driver session so it can read WebView pages and other apps' screens without
+  `uiautomator dump`. Apps using the app-instrumentation Gradle plugin get this generated; apps that
+  add the SDK by hand copy this file to src/debug/AndroidManifest.xml. Release builds must not
+  declare it. Also registers the sample's app actions (SampleAppActions) for `appAction` flows.
+-->
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <application>
+        <service
+            android:name="com.devscenario.app.instrumentation.internal.a11y.DevScenarioAccessibilityService"
+            android:exported="true"
+            android:label="@string/devscenario_accessibility_service_label"
+            android:permission="android.permission.BIND_ACCESSIBILITY_SERVICE">
+            <intent-filter>
+                <action android:name="android.accessibilityservice.AccessibilityService" />
+            </intent-filter>
+            <meta-data
+                android:name="android.accessibilityservice"
+                android:resource="@xml/devscenario_accessibility_service" />
+        </service>
+        <provider
+            android:name="ge.devtool.samples.android.SampleAppActions"
+            android:authorities="${applicationId}.sampleappactions"
+            android:exported="false" />
+    </application>
+</manifest>

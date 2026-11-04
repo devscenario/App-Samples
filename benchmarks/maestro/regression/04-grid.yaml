@@ -1,0 +1,17 @@
+appId: ${APP_ID}
+name: grid
+---
+- tapOn: "Grid"
+- extendedWaitUntil:
+    visible: "Product 1"
+    timeout: 10000
+- scrollUntilVisible:
+    element: "Product 5"
+- assertVisible: "Product 5"
+- tapOn: "Product 5"
+- assertVisible: "Product details"
+- assertVisible: "Selected Product 5"
+- assertVisible: "Price: \\$31\\.99"
+- tapOn:
+    id: "BackButton"
+- assertVisible: "Sample Screens"

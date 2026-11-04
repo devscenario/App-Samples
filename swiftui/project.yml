@@ -1,0 +1,64 @@
+name: DevToolSampleIosNative
+options:
+  bundleIdPrefix: ge.devtool.samples
+  deploymentTarget:
+    iOS: "15.0"
+settings:
+  base:
+    SWIFT_VERSION: 5.9
+packages:
+  DevScenarioAppInstrumentation:
+    url: https://github.com/devscenario/app-instrumentation-ios.git
+    from: 1.2.0
+  # Dev Scenario network interceptor — auto-wire SwiftPM product. The
+  # package's Obj-C `+load` hook registers the URLProtocol globally and
+  # swizzles `URLSession(configuration:…)` so every URLSession in this
+  # native app is captured without per-call code. The `NetworkView`
+  # screen exercises the hook with a few sample API calls.
+  DevScenarioHttpInterceptor:
+    url: https://github.com/devscenario/httpinterceptor-ios.git
+    from: 1.0.1
+schemes:
+  DevToolSampleIosNative:
+    build:
+      targets:
+        DevToolSampleIosNative: all
+        DevToolSampleIosNativeUITests: [test]
+    test:
+      targets:
+        - DevToolSampleIosNativeUITests
+targets:
+  DevToolSampleIosNative:
+    type: application
+    platform: iOS
+    sources:
+      - path: Sources
+      # Debug-only local WebSocket + SSE test server for the Network screen's stream demos.
+      - path: LocalStreamServer
+    dependencies:
+      - package: DevScenarioAppInstrumentation
+        product: DevScenarioAppInstrumentation
+      - package: DevScenarioHttpInterceptor
+        product: DevScenarioHttpInterceptorAuto
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: ge.devtool.samples.ios.native
+        INFOPLIST_FILE: Sources/Info.plist
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+        CODE_SIGNING_ALLOWED: NO
+        CODE_SIGNING_REQUIRED: NO
+  DevToolSampleIosNativeUITests:
+    type: bundle.ui-testing
+    platform: iOS
+    sources:
+      - path: UITests
+      # The app's tag constants, so UI tests use the same ids as the screens.
+      - path: Sources/TestTags.swift
+    dependencies:
+      - target: DevToolSampleIosNative
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: ge.devtool.samples.ios.native.uitests
+        TEST_TARGET_NAME: DevToolSampleIosNative
+        CODE_SIGNING_ALLOWED: NO
+        CODE_SIGNING_REQUIRED: NO

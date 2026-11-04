@@ -1,0 +1,41 @@
+// Files: seed a file with pushFile, pick it in the system file picker (an out-of-process
+// screen) and check the sample shows its name. Android: the file lands in Downloads and
+// DocumentsUI lists it (the in-app SDK driver reaches the chooser through "Auto fallback").
+// iOS: the file lands in the app's Documents folder (On My iPhone, the app's folder). The flow
+// picks it where the picker already lists it, else after one Browse tap, else browses to it.
+pushFile("devtool-sample.txt", content = "Dev Scenario sample file")
+scrollTo("Files", maxScrolls = 6, duration = 150ms)
+tap("Files")
+tap("Pick file")
+if (platform == android) {
+    tap("devtool-sample.txt", timeout = 15s)
+    waitFor("Selected file: devtool-sample.txt", timeout = 10s)
+}
+if (platform == ios) {
+    waitFor(id("DOC.browsingModeTabBar"), timeout = 15s)
+    // The picker reopens where it was last left, and the Browse tab keeps its own place, often
+    // the app's folder (named after its display name, "Dev Scenario Sample" in both iOS samples).
+    // So: the file's cell if it is already listed, else after one Browse tap, else walk there:
+    // Browse again (a second tap pops to the Browse root from any depth), On My iPhone, the
+    // app's folder. Each check looks once (a runIf without timeout). Cells are identified as
+    // "<name>, Container" (folders) and "<name>, <extension>" (files); Recents never lists the
+    // file (a pick from the app's own folder isn't recorded there).
+    if (notVisible(id("devtool-sample, txt"))) {
+        tap("Browse")
+        waitForAnimations
+        if (notVisible(id("devtool-sample, txt"))) {
+            tap("Browse")
+            waitForAnimations
+            tap(id("DOC.sidebar.item.On My iPhone"))
+            tap(id("Dev Scenario Sample, Container"), timeout = 10s)
+        }
+    }
+    waitFor(id("devtool-sample, txt"), timeout = 15s)
+    // The picker or the folder slides in: a tap on the cell before it settles is lost.
+    waitForAnimations
+    tap(id("devtool-sample, txt"))
+    waitFor("Selected file: devtool-sample.txt", timeout = 10s)
+}
+// Back to the start screen for the next unit.
+tap("Back")
+waitFor("Sample Screens")

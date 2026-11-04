@@ -1,0 +1,10 @@
+tap("List", timeout = 10s)
+tap("Order #1001", timeout = 10s)
+assertVisible("Order details")
+assertVisible("Selected Order #1001")
+assertVisible("Total: $42.00")
+scrollTo("Order #1008", maxScrolls = 8)
+assertVisible("Order #1008")
+// Back to the start screen for the next unit.
+tap("Back")
+waitFor("Sample Screens")

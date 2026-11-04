@@ -1,0 +1,21 @@
+# NOT COMPARABLE: Maestro has no pinch (multi-touch) command. This flow opens the screen and goes back
+# so the units after it start on the home screen; the two pinches and their checks are left out.
+appId: ${APP_ID}
+name: pinch
+---
+- scrollUntilVisible:
+    element: "Pinch"
+- tapOn: "Pinch"
+- runFlow:
+    when:
+      true: ${COMPOSE_IOS == 'true'}
+    file: subflows/retap-tile.yaml
+    env:
+      TILE: "Pinch"
+      SCREEN: "Pinch Playground"
+- extendedWaitUntil:
+    visible: "Pinch Playground"
+    timeout: 10000
+- tapOn:
+    id: "BackButton"
+- assertVisible: "Sample Screens"

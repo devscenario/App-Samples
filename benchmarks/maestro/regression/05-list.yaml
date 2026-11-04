@@ -1,0 +1,14 @@
+appId: ${APP_ID}
+name: list
+---
+- tapOn: "List"
+- tapOn: "Order #1001"
+- assertVisible: "Order details"
+- assertVisible: "Selected Order #1001"
+- assertVisible: "Total: \\$42\\.00"
+- scrollUntilVisible:
+    element: "Order #1008"
+- assertVisible: "Order #1008"
+- tapOn:
+    id: "BackButton"
+- assertVisible: "Sample Screens"

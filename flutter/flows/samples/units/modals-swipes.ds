@@ -1,0 +1,20 @@
+// Dismisses bottom sheets with swipes, after each has settled (a drag during the slide-in is lost,
+// with the device's animations off too). The home screen is a grid: scroll to the Modals tile.
+scrollTo("Modals", maxScrolls = 6, duration = 150ms)
+tap("Modals")
+waitFor("Open dialogs and sheets, then swipe down or dismiss to validate hide commands.", timeout = 10s)
+tap("Partial sheet")
+waitFor("Bottom sheet", timeout = 10s)
+waitForAnimations
+swipe(down)
+assertVisible(contains("Bottom sheet dismissed"))
+tap("Full sheet")
+waitFor("Bottom sheet", timeout = 10s)
+waitForAnimations
+// A plain swipe on a full sheet scrolls its content (on iOS even when it starts on the title):
+// drag the sheet itself by its drag handle.
+swipe(down, from = "Drag handle")
+assertVisible(contains("Bottom sheet dismissed"))
+// Back to the start screen for the next unit.
+tap("Back")
+waitFor("Sample Screens")

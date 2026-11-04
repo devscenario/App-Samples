@@ -1,0 +1,13 @@
+# Element centres on a 1080x2400 screen (Pixel-class emulator, API 34).
+appId: ${APP_ID}
+---
+- swipe: {start: "14%,45%", end: "50%,32%", duration: 150}   # Alpha -> Drop Zone
+- assertVisible: ".*Alpha dropped in zone.*"
+- swipe: {start: "35%,45%", end: "50%,32%", duration: 150}   # Beta -> Drop Zone
+- assertVisible: ".*Beta dropped in zone.*"
+- swipe: {start: "58%,45%", end: "50%,32%", duration: 150}   # Gamma -> Drop Zone
+- assertVisible: ".*Gamma dropped in zone.*"
+- swipe: {start: "22%,58%", end: "22%,65%", duration: 150}   # Row One -> Row Two
+- assertVisible: ".*moved.*"
+- swipe: {start: "23%,72%", end: "22%,58%", duration: 150}   # Row Three -> Row Two (now first)
+- assertVisible: ".*moved.*"

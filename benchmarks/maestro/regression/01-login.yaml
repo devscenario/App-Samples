@@ -1,0 +1,16 @@
+appId: ${APP_ID}
+name: login
+---
+- tapOn: "Login"
+- tapOn: "Email"
+- inputText: "qa@example.com"
+- assertVisible: "Login email typed: qa@example.com"
+- tapOn: "Password"
+- inputText: "Pass1234"
+- assertVisible: "Login password typed: Pass1234"
+- tapOn: "Remember me"
+- tapOn: "Sign in"
+- assertVisible: "Login success for qa@example.com"
+- tapOn:
+    id: "BackButton"
+- assertVisible: "Sample Screens"

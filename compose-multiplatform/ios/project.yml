@@ -1,0 +1,64 @@
+name: DevToolSampleIos
+options:
+  bundleIdPrefix: ge.devtool.samples
+  deploymentTarget:
+    iOS: "15.0"
+settings:
+  base:
+    SWIFT_VERSION: 5.9
+packages:
+  DevScenarioAppInstrumentation:
+    url: https://github.com/devscenario/app-instrumentation-ios.git
+    from: 1.2.0
+  # Dev Scenario network interceptor — auto-wire SwiftPM product. Linking it
+  # is enough: the package's Obj-C `+load` hook registers the URLProtocol
+  # globally and swizzles `URLSession(configuration:…)` so the shared-ui's
+  # `demoHttpCall` traffic is captured without any code changes here.
+  DevScenarioHttpInterceptor:
+    url: https://github.com/devscenario/httpinterceptor-ios.git
+    from: 1.0.1
+schemes:
+  DevToolSampleIos:
+    build:
+      targets:
+        DevToolSampleIos: all
+        DevToolSampleIosUITests: [test]
+    test:
+      targets:
+        - DevToolSampleIosUITests
+targets:
+  DevToolSampleIos:
+    type: application
+    platform: iOS
+    sources:
+      - path: Sources
+      # Debug-only local WebSocket + SSE test server for the Network screen's stream demos.
+      - path: LocalStreamServer
+    dependencies:
+      - package: DevScenarioAppInstrumentation
+        product: DevScenarioAppInstrumentation
+      - package: DevScenarioHttpInterceptor
+        product: DevScenarioHttpInterceptorAuto
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: ge.devtool.samples.ios
+        INFOPLIST_FILE: Sources/Info.plist
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+        FRAMEWORK_SEARCH_PATHS: "$(PROJECT_DIR)/../shared-ui/build/bin/iosSimulatorArm64/debugFramework $(inherited)"
+        OTHER_LDFLAGS: "$(inherited) -framework SampleSharedUi"
+        CODE_SIGNING_ALLOWED: NO
+        CODE_SIGNING_REQUIRED: NO
+  DevToolSampleIosUITests:
+    type: bundle.ui-testing
+    platform: iOS
+    sources:
+      - path: UITests/Regression
+    dependencies:
+      - target: DevToolSampleIos
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: ge.devtool.samples.ios.uitests
+        TEST_TARGET_NAME: DevToolSampleIos
+        SWIFT_ACTIVE_COMPILATION_CONDITIONS: "$(inherited) COMPOSE_SAMPLE"
+        CODE_SIGNING_ALLOWED: NO
+        CODE_SIGNING_REQUIRED: NO

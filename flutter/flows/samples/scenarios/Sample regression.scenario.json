@@ -1,0 +1,53 @@
+{
+  "name": "Sample regression",
+  "steps": [
+    {
+      "unit": "samples/units/launch.ds"
+    },
+    {
+      "unit": "samples/units/login.ds"
+    },
+    {
+      "unit": "samples/units/registration.ds"
+    },
+    {
+      "unit": "samples/units/checkout.ds"
+    },
+    {
+      "unit": "samples/units/grid.ds"
+    },
+    {
+      "unit": "samples/units/list.ds"
+    },
+    {
+      "unit": "samples/units/search.ds"
+    },
+    {
+      "unit": "samples/units/profile.ds"
+    },
+    {
+      "unit": "samples/units/showcase.ds"
+    },
+    {
+      "unit": "samples/units/pinch.ds"
+    },
+    {
+      "unit": "samples/units/drag-drop.ds"
+    },
+    {
+      "unit": "samples/units/modals.ds"
+    },
+    {
+      "unit": "samples/units/modals-swipes.ds"
+    },
+    {
+      "unit": "samples/units/modals-back.ds"
+    },
+    {
+      "unit": "samples/units/modals-code-sheet.ds"
+    },
+    {
+      "unit": "samples/units/network.ds"
+    }
+  ]
+}

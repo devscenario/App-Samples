@@ -1,0 +1,9 @@
+# launch.ds: the one app launch, from a clean state. Run on its own, before the timed regression.
+appId: ${APP_ID}
+name: launch
+---
+- launchApp:
+    clearState: true
+- extendedWaitUntil:
+    visible: "Sample Screens"
+    timeout: 15000

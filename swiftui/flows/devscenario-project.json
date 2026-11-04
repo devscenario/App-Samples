@@ -1,0 +1,13 @@
+{
+  "format": 1,
+  "modules": [
+    {
+      "dir": "samples",
+      "folders": [
+        {
+          "path": "platform-only"
+        }
+      ]
+    }
+  ]
+}

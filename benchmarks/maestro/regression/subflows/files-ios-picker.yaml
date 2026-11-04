@@ -1,0 +1,37 @@
+# The iOS half of files.ds: the picker reopens where it was last left, and the Browse tab keeps its
+# own place. Pick the file's cell if it is listed, else after one Browse tap, else walk to the app's
+# folder (Browse again, On My iPhone, the app's folder).
+appId: ${APP_ID}
+---
+- extendedWaitUntil:
+    visible:
+      id: "DOC.browsingModeTabBar"
+    timeout: 15000
+- runFlow:
+    when:
+      notVisible:
+        id: "devtool-sample, txt"
+    commands:
+      - tapOn: "Browse"
+      - waitForAnimationToEnd
+      - runFlow:
+          when:
+            notVisible:
+              id: "devtool-sample, txt"
+          commands:
+            - tapOn: "Browse"
+            - waitForAnimationToEnd
+            - tapOn:
+                id: "DOC.sidebar.item.On My iPhone"
+            - tapOn:
+                id: "Dev Scenario Sample, Container"
+- extendedWaitUntil:
+    visible:
+      id: "devtool-sample, txt"
+    timeout: 15000
+- waitForAnimationToEnd
+- tapOn:
+    id: "devtool-sample, txt"
+- extendedWaitUntil:
+    visible: "Selected file: devtool-sample\\.txt"
+    timeout: 10000

@@ -1,0 +1,18 @@
+appId: ${APP_ID}
+name: checkout
+---
+- tapOn: "Checkout"
+- extendedWaitUntil:
+    visible: "Checkout"
+    timeout: 10000
+- assertVisible: "Order summary"
+- tapOn: "Shipping address"
+- inputText: "42 Test Street"
+- assertVisible: "Checkout address typed: 42 Test Street"
+- tapOn: "Express delivery"
+- assertVisible: "Payment: Visa •••• 4242"
+- tapOn: "Place order"
+- assertVisible: "Order placed for 42 Test Street"
+- tapOn:
+    id: "BackButton"
+- assertVisible: "Sample Screens"

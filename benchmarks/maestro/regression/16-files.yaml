@@ -1,0 +1,31 @@
+# pushFile has no Maestro command: run-benchmark.sh seeds devtool-sample.txt before this run (Android:
+# adb push to Downloads + MediaProvider scan_file; iOS: a copy into the app's Documents) and times it.
+appId: ${APP_ID}
+name: files
+---
+- scrollUntilVisible:
+    element: "Files"
+- tapOn: "Files"
+- runFlow:
+    when:
+      true: ${COMPOSE_IOS == 'true'}
+    file: subflows/retap-tile.yaml
+    env:
+      TILE: "Files"
+      SCREEN: "Pick file"
+- tapOn: "Pick file"
+- runFlow:
+    when:
+      platform: Android
+    commands:
+      - tapOn: "devtool-sample\\.txt"
+      - extendedWaitUntil:
+          visible: "Selected file: devtool-sample\\.txt"
+          timeout: 10000
+- runFlow:
+    when:
+      platform: iOS
+    file: subflows/files-ios-picker.yaml
+- tapOn:
+    id: "BackButton"
+- assertVisible: "Sample Screens"

@@ -1,0 +1,11 @@
+// A text field inside a modal bottom sheet. On Android the sheet is its own window, so this checks
+// that the tap and the typing reach a field outside the screen's window.
+scrollTo("Modals", maxScrolls = 6, duration = 150ms)
+tap("Modals")
+tap("Code sheet")
+type("1111", into = testTag("sample.modals.verify.code"))
+tap(testTag("sample.modals.verify.submit"))
+assertVisible(contains("Code verified: 1111"))
+// Back to the start screen for the next unit.
+tap("Back")
+waitFor("Sample Screens")

@@ -131,3 +131,8 @@ xcodebuild test -project DevToolSampleIosNative.xcodeproj -scheme DevToolSampleI
 The XCUITest run prints its timing as a `DEVSCENARIO_NATIVE_TIMING_JSON:` line. Maestro's steps and the differences
 from the `.ds` flows are in [`benchmarks/maestro/README.md`](benchmarks/maestro/README.md). Published results are on
 the [benchmark page](https://devscenario.com/benchmark/).
+
+## Licence
+
+The samples and flows in this repository are under the [MIT licence](LICENSE). The Dev Scenario SDKs they link are
+separate packages under the [Dev Scenario SDK License](https://devscenario.com/legal/sdk-license/).

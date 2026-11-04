@@ -1,5 +1,10 @@
 # Dev Scenario sample apps
 
+https://github.com/user-attachments/assets/b765e4e2-22b0-40b5-8eeb-d0abeb5b2b80
+
+The Compose Multiplatform sample's 18-unit regression in real time: one run, 15.2 s, on an Android emulator with
+the in-app SDK and no mocked calls.
+
 Three sample apps with the same screens and test tags, and the [Dev Scenario](https://devscenario.com) `.ds`
 flows that test them. Clone this repository, build a sample and run its flows on your own emulator or simulator.
 

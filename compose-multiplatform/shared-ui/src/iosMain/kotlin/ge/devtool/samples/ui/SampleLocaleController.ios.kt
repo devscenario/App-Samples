@@ -7,7 +7,7 @@ import platform.Foundation.preferredLanguages
 
 /**
  * iOS `actual`: drives the **per-app `AppleLanguages`** default. This is the
- * app's own preferences domain that the devtool's `AppLanguageDetector` reads
+ * app's own preferences domain that Dev Scenario's `AppLanguageDetector` reads
  * back via `defaults read <bundleId> AppleLanguages`.
  *
  * [current] reflects what the bundle is actually rendering in

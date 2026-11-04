@@ -25,7 +25,7 @@ internal const val DEMO_HTTP_TIMEOUT_SECONDS = 12L
  * Fires a single HTTP call on the platform's native networking stack:
  *
  *  - Android `actual` uses `OkHttpClient` — the Dev Scenario auto-wire plugin
- *    (`ge.devtool.e2e-interceptor-auto`) rewrites the `Builder.build()` call
+ *    (`io.github.devscenario.httpinterceptor.auto`) rewrites the `Builder.build()` call
  *    so traffic flows through `NetworkLogInterceptor` without any code here.
  *  - iOS `actual` uses `NSURLSession` — the SwiftPM `DevScenarioHttpInterceptorAuto`
  *    product's `+load` hook swizzles the URLSession factories so traffic

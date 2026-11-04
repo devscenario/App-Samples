@@ -85,14 +85,14 @@ extension SampleRegressionUITests {
 
     // files.ds (the `runIf: platform: ios` picker path)
     func unitFiles() {
-        RegressionFilePusher.push(name: "devtool-sample.txt", content: "Dev Scenario sample file", bundleId: bundleId)
+        RegressionFilePusher.push(name: "dev-scenario-sample.txt", content: "Dev Scenario sample file", bundleId: bundleId)
         d.scrollUntilVisible("Files", maxScrolls: 6)
         d.tap("Files")
         d.tap("Pick file")
         d.waitUntilVisible(.id("DOC.browsingModeTabBar"), timeout: 15)
         // The file's cell if the picker already lists it, else after one Browse tap, else walk to
         // the app's folder. Each check looks once, without waiting.
-        let file = d.element(.id("devtool-sample, txt"))
+        let file = d.element(.id("dev-scenario-sample, txt"))
         if !file.exists {
             d.tap("Browse")
             d.waitForAnimationToEnd(outOfProcess: true)
@@ -104,10 +104,10 @@ extension SampleRegressionUITests {
                 d.tap(.id("Dev Scenario Sample, Container"))
             }
         }
-        d.waitUntilVisible(.id("devtool-sample, txt"), timeout: 15)
+        d.waitUntilVisible(.id("dev-scenario-sample, txt"), timeout: 15)
         d.waitForAnimationToEnd(outOfProcess: true)
-        d.tap(.id("devtool-sample, txt"))
-        d.waitUntilVisible("Selected file: devtool-sample.txt", timeout: 10)
+        d.tap(.id("dev-scenario-sample, txt"))
+        d.waitUntilVisible("Selected file: dev-scenario-sample.txt", timeout: 10)
         backToHome()
     }
 

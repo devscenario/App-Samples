@@ -34,7 +34,7 @@ launch.yaml`, then `… regression`). The script also:
   off too). It doesn't restore them.
 - iOS: resets the system file picker's remembered place before the run, as for the other suites
   (`defaults delete com.apple.DocumentManager.defaults "<bundle id>-com.apple.DocumentManager.Role.Picker-…"`).
-- Seeds `devtool-sample.txt` after the launch (see *Differences*) and adds that time to the `files` unit.
+- Seeds `dev-scenario-sample.txt` after the launch (see *Differences*) and adds that time to the `files` unit.
 
 Per-unit time is each flow's `time` in Maestro's JUnit report (`--format junit`): the flows run back to back in
 one `maestro test` call, in the app `launch.yaml` left open (no flow launches or stops the app). The total adds

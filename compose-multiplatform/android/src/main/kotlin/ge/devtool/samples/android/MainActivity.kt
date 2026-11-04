@@ -16,7 +16,7 @@ import ge.devtool.samples.ui.SampleApp
 // AppCompatActivity (not the bare ComponentActivity) so the in-app language
 // chooser's AppCompatDelegate.setApplicationLocales() applies on API 24+ — it
 // requires an AppCompat host + theme to recreate the activity with the new
-// per-app locale. The devtool reads that locale back via
+// per-app locale. Dev Scenario reads that locale back via
 // `cmd locale get-app-locales`.
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

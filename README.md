@@ -5,7 +5,7 @@ https://github.com/user-attachments/assets/b765e4e2-22b0-40b5-8eeb-d0abeb5b2b80
 The Compose Multiplatform sample's 18-unit regression in real time: one run, 15.2 s, on an Android emulator with
 the in-app SDK and no mocked calls.
 
-Three sample apps with the same screens and test tags, and the [Dev Scenario](https://devscenario.com) `.ds`
+Three sample apps with the same core screens and test tags, and the [Dev Scenario](https://devscenario.com) `.ds`
 flows that test them. Clone this repository, build a sample and run its flows on your own emulator or simulator.
 
 | Folder | App | Platforms | App id |
@@ -22,7 +22,7 @@ once and walks every screen. Also here:
 - The same regression as native tests: Espresso in `compose-multiplatform/android/src/androidTest`, XCUITest in
   `swiftui/UITests/Regression` and `compose-multiplatform/ios/UITests/Regression`.
 
-The samples use the published Dev Scenario SDKs, in debug builds only:
+The samples use the published Dev Scenario SDKs:
 [`io.github.devscenario`](https://central.sonatype.com/namespace/io.github.devscenario) on Maven Central,
 [app-instrumentation-ios](https://github.com/devscenario/app-instrumentation-ios) and
 [httpinterceptor-ios](https://github.com/devscenario/httpinterceptor-ios) with SwiftPM,
@@ -80,8 +80,8 @@ flutter pub get
 flutter run
 ```
 
-The Flutter sample has no Files, App files or WebView screen and reads no launch arguments, so its `flows/` leaves
-out the units for them: its Sample regression has 16 units instead of 18. **We haven't run this build or its flows
+The Flutter sample has no Files, App files, Dates or WebView screen and reads no launch arguments, so its `flows/`
+leaves out the units for them: its Sample regression has 16 units instead of 18. **We haven't run this build or its flows
 yet.**
 
 ## Run the flows

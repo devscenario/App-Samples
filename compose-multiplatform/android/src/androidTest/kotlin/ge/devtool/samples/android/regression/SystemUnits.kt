@@ -23,14 +23,14 @@ internal fun RegressionSteps.network() = with(ui) {
 /** files.ds (its `runIf: platform: android` block; the iOS block is skipped). */
 @RequiresApi(Build.VERSION_CODES.S)
 internal fun RegressionSteps.files() {
-    system.pushFile(name = "devtool-sample.txt", content = "Dev Scenario sample file")
+    system.pushFile(name = "dev-scenario-sample.txt", content = "Dev Scenario sample file")
     ui.scrollUntilVisible("Files", maxScrolls = 6)
     ui.tapOn("Files")
     ui.tapOn("Pick file")
     // runIf: platform: android
-    system.waitUntilVisible("devtool-sample.txt", timeoutMs = 15_000)
-    system.tapOn("devtool-sample.txt")
-    ui.waitUntilVisible("Selected file: devtool-sample.txt", timeoutMs = 10_000)
+    system.waitUntilVisible("dev-scenario-sample.txt", timeoutMs = 15_000)
+    system.tapOn("dev-scenario-sample.txt")
+    ui.waitUntilVisible("Selected file: dev-scenario-sample.txt", timeoutMs = 10_000)
     // end runIf
     ui.tapOn("Back")
     ui.waitUntilVisible("Sample Screens")

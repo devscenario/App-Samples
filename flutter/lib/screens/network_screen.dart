@@ -141,7 +141,7 @@ class _NetworkScreenState extends State<NetworkScreen> {
             'POST /posts',
             'POST',
             'https://jsonplaceholder.typicode.com/posts',
-            body: {'title': 'devtool', 'body': 'hello', 'userId': 1},
+            body: {'title': 'dev scenario', 'body': 'hello', 'userId': 1},
           ),
           child: Text(strings.networkBtnPostBody),
         ),
@@ -149,7 +149,7 @@ class _NetworkScreenState extends State<NetworkScreen> {
         OutlinedButton(
           key: const ValueKey(TestTags.networkBtnHttpbin),
           onPressed: () => _fire(
-              'GET httpbin', 'GET', 'https://httpbin.org/get?source=devtool-sample'),
+              'GET httpbin', 'GET', 'https://httpbin.org/get?source=dev-scenario-sample'),
           child: Text(strings.networkBtnHttpbin),
         ),
         const SizedBox(height: 8),

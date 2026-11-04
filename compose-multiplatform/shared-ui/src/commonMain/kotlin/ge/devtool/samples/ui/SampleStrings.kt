@@ -5,7 +5,7 @@ import androidx.compose.runtime.staticCompositionLocalOf
 /**
  * In-app language for the sample app. Drives the displayed strings via
  * [LocalSampleStrings] AND mirrors into the OS-level per-app locale through
- * [SampleLocaleController] (so the OS persists the choice and the devtool's
+ * [SampleLocaleController] (so the OS persists the choice and Dev Scenario's
  * flow-translation auto-detection observes it). Default is [ENGLISH] for any OS
  * locale other than Georgian, so existing E2E flows and the Espresso parity
  * tests (which assert on English copy) keep passing.

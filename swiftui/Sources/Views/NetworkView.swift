@@ -67,7 +67,7 @@ struct NetworkView: View {
                     Button(strings.networkBtnPostBody) {
                         fire(label: "POST /posts", method: "POST",
                              url: "https://jsonplaceholder.typicode.com/posts",
-                             body: #"{"title":"devtool","body":"hello","userId":1}"#)
+                             body: #"{"title":"dev scenario","body":"hello","userId":1}"#)
                     }
                     .buttonStyle(.borderedProminent)
                     .accessibilityIdentifier(TestTags.networkBtnPostBody)
@@ -75,7 +75,7 @@ struct NetworkView: View {
 
                     Button(strings.networkBtnHttpbin) {
                         fire(label: "GET httpbin", method: "GET",
-                             url: "https://httpbin.org/get?source=devtool-sample")
+                             url: "https://httpbin.org/get?source=dev-scenario-sample")
                     }
                     .buttonStyle(.bordered)
                     .accessibilityIdentifier(TestTags.networkBtnHttpbin)

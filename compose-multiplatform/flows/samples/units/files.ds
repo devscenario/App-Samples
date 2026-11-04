@@ -3,13 +3,13 @@
 // DocumentsUI lists it (the in-app SDK driver reaches the chooser through "Auto fallback").
 // iOS: the file lands in the app's Documents folder (On My iPhone, the app's folder). The flow
 // picks it where the picker already lists it, else after one Browse tap, else browses to it.
-pushFile("devtool-sample.txt", content = "Dev Scenario sample file")
+pushFile("dev-scenario-sample.txt", content = "Dev Scenario sample file")
 scrollTo("Files", maxScrolls = 6, duration = 150ms)
 tap("Files")
 tap("Pick file")
 if (platform == android) {
-    tap("devtool-sample.txt", timeout = 15s)
-    waitFor("Selected file: devtool-sample.txt", timeout = 10s)
+    tap("dev-scenario-sample.txt", timeout = 15s)
+    waitFor("Selected file: dev-scenario-sample.txt", timeout = 10s)
 }
 if (platform == ios) {
     waitFor(id("DOC.browsingModeTabBar"), timeout = 15s)
@@ -20,21 +20,21 @@ if (platform == ios) {
     // app's folder. Each check looks once (a runIf without timeout). Cells are identified as
     // "<name>, Container" (folders) and "<name>, <extension>" (files); Recents never lists the
     // file (a pick from the app's own folder isn't recorded there).
-    if (notVisible(id("devtool-sample, txt"))) {
+    if (notVisible(id("dev-scenario-sample, txt"))) {
         tap("Browse")
         waitForAnimations
-        if (notVisible(id("devtool-sample, txt"))) {
+        if (notVisible(id("dev-scenario-sample, txt"))) {
             tap("Browse")
             waitForAnimations
             tap(id("DOC.sidebar.item.On My iPhone"))
             tap(id("Dev Scenario Sample, Container"), timeout = 10s)
         }
     }
-    waitFor(id("devtool-sample, txt"), timeout = 15s)
+    waitFor(id("dev-scenario-sample, txt"), timeout = 15s)
     // The picker or the folder slides in: a tap on the cell before it settles is lost.
     waitForAnimations
-    tap(id("devtool-sample, txt"))
-    waitFor("Selected file: devtool-sample.txt", timeout = 10s)
+    tap(id("dev-scenario-sample, txt"))
+    waitFor("Selected file: dev-scenario-sample.txt", timeout = 10s)
 }
 // Back to the start screen for the next unit.
 tap("Back")

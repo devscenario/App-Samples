@@ -7,7 +7,7 @@ import java.util.Locale
 /**
  * Android `actual`: drives the **AndroidX per-app locale** via
  * [AppCompatDelegate]. This is the platform-recommended mechanism for an in-app
- * language switch and is exactly what the devtool's `AppLanguageDetector` reads
+ * language switch and is exactly what Dev Scenario's `AppLanguageDetector` reads
  * back over `cmd locale get-app-locales <appId>`.
  *
  * `AppCompatDelegate.setApplicationLocales(...)` persists the choice itself

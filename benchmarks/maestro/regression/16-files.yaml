@@ -1,4 +1,4 @@
-# pushFile has no Maestro command: run-benchmark.sh seeds devtool-sample.txt before this run (Android:
+# pushFile has no Maestro command: run-benchmark.sh seeds dev-scenario-sample.txt before this run (Android:
 # adb push to Downloads + MediaProvider scan_file; iOS: a copy into the app's Documents) and times it.
 appId: ${APP_ID}
 name: files
@@ -18,9 +18,9 @@ name: files
     when:
       platform: Android
     commands:
-      - tapOn: "devtool-sample\\.txt"
+      - tapOn: "dev-scenario-sample\\.txt"
       - extendedWaitUntil:
-          visible: "Selected file: devtool-sample\\.txt"
+          visible: "Selected file: dev-scenario-sample\\.txt"
           timeout: 10000
 - runFlow:
     when:

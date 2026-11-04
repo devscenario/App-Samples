@@ -6,7 +6,7 @@ package ge.devtool.samples.ui
  * Compose state only.
  *
  * Why OS locale (and not a custom SharedPreferences/NSUserDefaults key): the OS
- * persists the per-app locale itself, and the devtool's flow-translation
+ * persists the per-app locale itself, and Dev Scenario's flow-translation
  * auto-detection reads that exact location to learn what language the app is
  * rendering in (`AppLanguageDetector`):
  *

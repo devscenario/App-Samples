@@ -49,7 +49,7 @@ kotlin {
             implementation(libs.kotlinx.coroutinesCore)
         }
         // The Android `actual` of `demoHttpCall` (see DemoHttp.android.kt) is
-        // built on OkHttp specifically so the consuming android-app's
+        // built on OkHttp specifically so the consuming Android app's
         // `io.github.devscenario.httpinterceptor.auto` plugin can ASM-instrument the
         // `OkHttpClient.Builder.build()` call inside this module too. The iOS
         // `actual` (DemoHttp.ios.kt) uses NSURLSession directly so no extra
@@ -61,8 +61,8 @@ kotlin {
             implementation(libs.okhttp.sse)
             // SampleLocaleController (Android actual) drives the AndroidX
             // per-app locale via AppCompatDelegate.setApplicationLocales — the
-            // platform-recommended in-app language switch, and exactly what the
-            // devtool reads back via `cmd locale get-app-locales`. The OS
+            // platform-recommended in-app language switch, and exactly what
+            // Dev Scenario reads back via `cmd locale get-app-locales`. The OS
             // persists the choice (no custom preference key needed) and brings
             // in androidx.core (LocaleListCompat) transitively. Requires the
             // host Activity to be an AppCompatActivity (see compose-multiplatform/android).

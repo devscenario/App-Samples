@@ -1,5 +1,5 @@
-// Runs an action the sample app registered that returns a value (SampleAppActions, debug builds with
-// the SDK built from source): `sampleUser` hands the flow `SAMPLE_USER`, which a later step types.
+// Runs an action the sample app registered that returns a value (SampleAppActions, debug builds):
+// `sampleUser` hands the flow `SAMPLE_USER`, which a later step types.
 // In-app SDK driver only; every other driver fails the step.
 launchApp(androidAppId = "ge.devtool.samples")
 appAction("sampleUser", timeout = 10s, args = args(suffix = ".lovelace"))

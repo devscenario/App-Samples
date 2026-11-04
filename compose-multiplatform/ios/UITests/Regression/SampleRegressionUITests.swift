@@ -6,8 +6,8 @@ import XCTest
 /// back on the home grid through its own Back steps, as the .ds units do. Used as the native baseline
 /// on the benchmark page.
 ///
-/// Target app: the UI-test target's own app, `ge.devtool.samples.ios.native` (ios-uikit) or, built
-/// with `COMPOSE_SAMPLE` (ios-compose's UI-test target), `ge.devtool.samples.ios`. `SAMPLE_BUNDLE_ID`
+/// Target app: the UI-test target's own app, `ge.devtool.samples.ios.native` or, built
+/// with `COMPOSE_SAMPLE` (the Compose sample), `ge.devtool.samples.ios`. `SAMPLE_BUNDLE_ID`
 /// in the runner's environment (`TEST_RUNNER_SAMPLE_BUNDLE_ID=… xcodebuild test …`) overrides it.
 final class SampleRegressionUITests: XCTestCase {
     static let composeBundleId = "ge.devtool.samples.ios"

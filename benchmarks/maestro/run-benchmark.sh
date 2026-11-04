@@ -16,7 +16,7 @@ mkdir -p "$out"
 export MAESTRO_CLI_NO_ANALYTICS=1 MAESTRO_CLI_ANALYSIS_NOTIFICATION_DISABLED=true
 export PATH="$PATH:$HOME/.maestro/bin"
 adb_bin="${ANDROID_HOME:-$HOME/Library/Android/sdk}/platform-tools/adb"
-file_name=devtool-sample.txt
+file_name=dev-scenario-sample.txt
 file_content="Dev Scenario sample file"
 
 now_ms() { python3 -c 'import time; print(int(time.time() * 1000))'; }

@@ -10,14 +10,14 @@ appId: ${APP_ID}
 - runFlow:
     when:
       notVisible:
-        id: "devtool-sample, txt"
+        id: "dev-scenario-sample, txt"
     commands:
       - tapOn: "Browse"
       - waitForAnimationToEnd
       - runFlow:
           when:
             notVisible:
-              id: "devtool-sample, txt"
+              id: "dev-scenario-sample, txt"
           commands:
             - tapOn: "Browse"
             - waitForAnimationToEnd
@@ -27,11 +27,11 @@ appId: ${APP_ID}
                 id: "Dev Scenario Sample, Container"
 - extendedWaitUntil:
     visible:
-      id: "devtool-sample, txt"
+      id: "dev-scenario-sample, txt"
     timeout: 15000
 - waitForAnimationToEnd
 - tapOn:
-    id: "devtool-sample, txt"
+    id: "dev-scenario-sample, txt"
 - extendedWaitUntil:
-    visible: "Selected file: devtool-sample\\.txt"
+    visible: "Selected file: dev-scenario-sample\\.txt"
     timeout: 10000

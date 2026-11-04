@@ -149,7 +149,7 @@ internal fun NetworkScreen() {
                     "POST /posts",
                     "POST",
                     "https://jsonplaceholder.typicode.com/posts",
-                    """{"title":"devtool","body":"hello","userId":1}""",
+                    """{"title":"dev scenario","body":"hello","userId":1}""",
                 )
             },
             modifier = Modifier.fillMaxWidth().testTag(TestTags.NETWORK_BTN_POST_BODY),
@@ -160,7 +160,7 @@ internal fun NetworkScreen() {
                 fireCall(
                     "GET httpbin",
                     "GET",
-                    "https://httpbin.org/get?source=devtool-sample",
+                    "https://httpbin.org/get?source=dev-scenario-sample",
                 )
             },
             modifier = Modifier.fillMaxWidth().testTag(TestTags.NETWORK_BTN_HTTPBIN),

@@ -2,7 +2,7 @@ import UIKit
 
 #if canImport(DevScenarioAppInstrumentation)
 // F2: Dev Scenario in-app instrumentation SDK linked into the sample.
-// Same opt-in pattern as the Compose-based ios-app sample so this
+// Same opt-in pattern as the Compose-based sample so this
 // from-scratch native app can also pair with the "In-app SDK" iOS
 // driver mode in Dev Scenario.
 import DevScenarioAppInstrumentation

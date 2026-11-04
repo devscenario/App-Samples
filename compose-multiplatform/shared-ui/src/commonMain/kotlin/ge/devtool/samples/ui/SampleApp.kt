@@ -74,7 +74,7 @@ fun SampleApp(launchEnv: String? = null, backendUrl: String = IOS_DEFAULT_BACKEN
         // locale other than Georgian, so existing English-asserting E2E flows /
         // Espresso parity tests keep passing. The displayed strings come from
         // the kept En/Ka tables (LocalSampleStrings); selecting a language also
-        // mirrors the choice into the OS locale so it persists and the devtool's
+        // mirrors the choice into the OS locale so it persists and Dev Scenario's
         // flow-translation auto-detection (reading from the locale) observes it.
         var language by remember { mutableStateOf(SampleLocaleController.current()) }
         val strings = if (language == SampleLanguage.GEORGIAN) KaStrings else EnStrings
